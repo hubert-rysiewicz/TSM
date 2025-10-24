@@ -1,3 +1,5 @@
 class ParseCases:
-    pass
+    @staticmethod
+    def date(text: str):
+        pass
 
