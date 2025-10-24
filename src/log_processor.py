@@ -1,4 +1,4 @@
-import parse_cases as ParseCases
+from .parse_cases import ParseCases
 from typing import Iterator
 
 class LogProcessor(ParseCases):
