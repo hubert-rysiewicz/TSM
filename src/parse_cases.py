@@ -18,6 +18,10 @@ class ParseCases:
         self.current_date = parsed_date
         return True
 
+    @staticmethod
+    def clean(*args):
+        return [arg.strip() for arg in args]
+
     def content(self, line: str) -> bool:
         try:
             line.split("-")
@@ -25,9 +29,12 @@ class ParseCases:
             return False
 
         parsed_time, parsed_activity = line.split("-")
-        if "(" in parsed_activity:
-
+        parsed_parameters = ""
+        if "|" in parsed_activity:
+            parsed_activity, parsed_parameters = parsed_activity.split("|")
+        parsed_time, parsed_activity, parsed_parameters = self.clean(parsed_time, parsed_activity, parsed_parameters)
+        last_word = parsed_activity.split()[-1].lower()
         function = RULES_MAP.get(last_word)
         if function:
-            function(activity_parameters)
+            function(parsed_parameters)
         return True
