@@ -1,5 +1,5 @@
 class ParseCases:
     @staticmethod
-    def date(text: str):
-        pass
+    def date(line: str) -> bool:
+        print(line)
 

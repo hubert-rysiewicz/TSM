@@ -1,8 +1,7 @@
 from .parse_cases import ParseCases
 from typing import Iterator
 
-#ParseCases Inherited (helper functions)
-class LogProcessor(ParseCases):
+class LogProcessor:
     #Read file contents and returns list of lines
     @staticmethod
     def read_file(file_path: str) -> Iterator[str]: #Returns generator not list
@@ -18,9 +17,9 @@ class LogProcessor(ParseCases):
         # List method is used because "read_file" is a generator (yield)
         self.text = list(LogProcessor.read_file(data_file_path))
 
-    #Parsing different parts of text (functions from inherited ParseCases (parse_cases.py))
     def parse(self):
-        self.date(line_example)
+        for line in self.text:
+            ParseCases.date(line)
 
 
 
