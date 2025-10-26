@@ -20,7 +20,9 @@ class LogProcessor:
 
     def parse(self):
         for line in self.text:
-            self.parser.date(line)
+            if self.parser.date(line):
+                continue
+
 
 
 
