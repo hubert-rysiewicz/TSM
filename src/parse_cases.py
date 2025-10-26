@@ -1,9 +1,9 @@
 from datetime import datetime, timedelta
 
-class ParseCases:
+class GeneralParseCases:
     def __init__(self):
-        self.current_date = 0
-        self.activities = []
+        self.current_date = None
+        self.activities = {}
 
     def date(self, line: str) -> bool:
         try:
@@ -16,3 +16,15 @@ class ParseCases:
                   f"Received date: {parsed_date}. There may be missed days.")
         self.current_date = parsed_date
         return True
+
+    def content(self, line: str) -> bool:
+        try:
+            line.split("-")
+        except Exception:
+            return False
+
+        parsed_time, parsed_activity = line.split("-")
+        print(parsed_time, parsed_activity)
+        return True
+
+class ContentParseCases:

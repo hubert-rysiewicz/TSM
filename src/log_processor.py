@@ -1,4 +1,4 @@
-from .parse_cases import ParseCases
+from .parse_cases import GeneralParseCases
 from typing import Iterator
 
 class LogProcessor:
@@ -16,12 +16,13 @@ class LogProcessor:
     def __init__(self, data_file_path: str) -> None:
         # List method is used because "read_file" is a generator (yield)
         self.text = list(LogProcessor.read_file(data_file_path))
-        self.parser = ParseCases()
+        self.parser = GeneralParseCases()
 
     def parse(self):
         for line in self.text:
             if self.parser.date(line):
                 continue
+            self.parser.content(line)
 
 
 
