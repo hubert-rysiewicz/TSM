@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
+from .content_rules import ContentRules, RULES_MAP
 
-class GeneralParseCases:
+class ParseCases:
     def __init__(self):
         self.current_date = None
         self.activities = {}
@@ -24,7 +25,9 @@ class GeneralParseCases:
             return False
 
         parsed_time, parsed_activity = line.split("-")
-        print(parsed_time, parsed_activity)
-        return True
+        if "(" in parsed_activity:
 
-class ContentParseCases:
+        function = RULES_MAP.get(last_word)
+        if function:
+            function(activity_parameters)
+        return True
