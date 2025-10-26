@@ -16,10 +16,11 @@ class LogProcessor:
     def __init__(self, data_file_path: str) -> None:
         # List method is used because "read_file" is a generator (yield)
         self.text = list(LogProcessor.read_file(data_file_path))
+        self.parser = ParseCases()
 
     def parse(self):
         for line in self.text:
-            ParseCases.date(line)
+            self.parser.date(line)
 
 
 
