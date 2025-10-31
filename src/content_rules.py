@@ -7,6 +7,7 @@ class ContentRules:
     def parse_project(cls, activity_parameters: str) -> bool:
         print(activity_parameters)
 
+#Maps the passed parameter (last word) to the function that applies to it
 RULES_MAP = {
     "eat" : ContentRules.parse_ate,
     "project" : ContentRules.parse_project,

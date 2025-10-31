@@ -18,7 +18,8 @@ class LogProcessor:
         self.text = list(LogProcessor.read_file(data_file_path))
         self.parser = ParseCases()
 
-    def parse(self):
+    #Parse each line of text by mapping to each type
+    def parse(self) -> None:
         for line in self.text:
             if self.parser.date(line):
                 continue
